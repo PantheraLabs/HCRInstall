@@ -2,9 +2,9 @@
 set -e
 
 # HCR CLI Installer
-# One-line install: curl -fsSL https://pantheralabs.github.io/HCRInstall/install.sh | bash
+# One-line install: curl -fsSL https://pantheralabs.github.io/HCR/install.sh | bash
 
-REPO="PantheraLabs/hcr-install"
+REPO="PantheraLabs/HCR"
 INSTALL_DIR="${INSTALL_DIR:-/usr/local/bin}"
 
 # Detect OS and architecture

@@ -27,13 +27,13 @@
 ### macOS / Linux
 
 ```bash
-curl -fsSL https://pantheralabs.github.io/HCRInstall/install.sh | bash
+curl -fsSL https://pantheralabs.github.io/HCR/install.sh | bash
 ```
 
 ### Windows (PowerShell)
 
 ```powershell
-irm https://pantheralabs.github.io/HCRInstall/install.ps1 | iex
+irm https://pantheralabs.github.io/HCR/install.ps1 | iex
 ```
 
 **That's it.** `hcr` is now available from any terminal, any project directory.
@@ -62,7 +62,7 @@ The HCR CLI — a commercial-grade developer tool for the <a href="https://githu
 | Linux | x64 | `hcr-linux-x64` |
 | Windows | x64 | `hcr-windows-x64.exe` |
 
-Binaries are built automatically on every release via GitHub Actions and published to <a href="https://github.com/PantheraLabs/hcr-install/releases">Releases</a>.
+Binaries are built automatically on every release via GitHub Actions and published to <a href="https://github.com/PantheraLabs/HCR/releases">Releases</a>.
 
 ---
 
@@ -72,7 +72,7 @@ If you prefer to download the binary yourself:
 
 ```bash
 # 1. Download the latest release for your platform
-#    https://github.com/PantheraLabs/hcr-install/releases/latest
+#    https://github.com/PantheraLabs/HCR/releases/latest
 
 # 2. Make executable (macOS / Linux)
 chmod +x hcr-*
@@ -137,7 +137,7 @@ HybridCognitiveRuntime    -->  hcr-install
 |---------|------|-------|-------|---------|
 | v0.2.0 | 2026-05-05 | ✅ | ✅ | ✅ |
 
-View all releases: <a href="https://github.com/PantheraLabs/hcr-install/releases">github.com/PantheraLabs/hcr-install/releases</a>
+View all releases: <a href="https://github.com/PantheraLabs/HCR/releases">github.com/PantheraLabs/HCR/releases</a>
 
 ---
 
