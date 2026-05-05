@@ -1,37 +1,260 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Install HCR</title>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Install HCR — Hybrid Cognitive Runtime</title>
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', monospace; max-width: 800px; margin: 60px auto; padding: 0 20px; background: #0a0a0a; color: #e0e0e0; line-height: 1.6; }
-        h1 { color: #00d4ff; border-bottom: 2px solid #00d4ff; padding-bottom: 15px; margin-bottom: 30px; }
-        h3 { color: #00d4ff; margin-top: 30px; }
-        p { color: #a0a0a0; }
-        .cmd { background: #1a1a1a; padding: 18px 22px; border-radius: 10px; margin: 15px 0; border-left: 4px solid #00d4ff; }
-        .cmd code { color: #fff; font-size: 15px; font-family: 'SF Mono', 'Cascadia Code', monospace; }
-        .platform { margin: 40px 0; }
-        a { color: #00d4ff; text-decoration: none; }
-        a:hover { text-decoration: underline; }
-        .footer { margin-top: 60px; padding-top: 20px; border-top: 1px solid #333; color: #666; font-size: 14px; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0A0A0A;
+            color: #e0e0e0;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 80px 20px 40px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 640px;
+            position: relative;
+        }
+
+        /* Logo */
+        .logo {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        .logo pre {
+            display: inline-block;
+            color: #00d4ff;
+            font-family: 'SF Mono', 'Cascadia Code', 'Fira Code', monospace;
+            font-size: 11px;
+            line-height: 1.4;
+            letter-spacing: 0;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        .header h1 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: -0.04em;
+            margin-bottom: 8px;
+        }
+        .header p {
+            color: #a1a1aa;
+            font-size: 16px;
+        }
+
+        /* Cards */
+        .card {
+            background: #111111;
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 16px;
+            transition: border-color 0.2s;
+        }
+        .card:hover {
+            border-color: rgba(255,255,255,0.12);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .card-label {
+            font-size: 12px;
+            color: #71717a;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: 500;
+        }
+
+        /* Copy Button */
+        .copy-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            color: #71717a;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 6px;
+            transition: color 0.2s, background 0.2s;
+            font-family: inherit;
+        }
+        .copy-btn:hover {
+            color: #60a5fa;
+            background: rgba(255,255,255,0.03);
+        }
+        .copy-btn svg {
+            width: 14px;
+            height: 14px;
+        }
+        .copy-btn.copied {
+            color: #4ade80;
+        }
+
+        /* Code Block */
+        .code-block {
+            font-family: 'SF Mono', 'Cascadia Code', 'Fira Code', monospace;
+            font-size: 13px;
+            color: #d4d4d8;
+            word-break: break-all;
+        }
+
+        /* Flow line divider */
+        .divider {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 1px;
+            background: rgba(255,255,255,0.03);
+            transform: translateX(-50%);
+            pointer-events: none;
+        }
+        .divider::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 128px;
+            background: linear-gradient(to bottom, transparent, rgba(37,99,235,0.4), transparent);
+            animation: flow 4s ease-in-out infinite;
+        }
+        @keyframes flow {
+            0%, 100% { transform: translateY(-128px); }
+            50% { transform: translateY(100%); }
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+        .footer a {
+            color: #60a5fa;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        .footer p {
+            color: #52525b;
+            font-size: 14px;
+            margin-top: 8px;
+        }
+
+        /* Subtle note */
+        .note {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 13px;
+            color: #52525b;
+        }
+        .note a {
+            color: #60a5fa;
+            text-decoration: none;
+        }
+        .note a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
-    <h1>HCR CLI Installer</h1>
-    <p>Hybrid Cognitive Runtime — State-based AI context for developers</p>
+    <div class="container">
+        <!-- Animated flow line -->
+        <div class="divider" aria-hidden="true"></div>
 
-    <div class="platform">
-        <h3>macOS / Linux</h3>
-        <div class="cmd"><code>curl -fsSL https://install.hcr.dev | bash</code></div>
+        <!-- Logo -->
+        <div class="logo">
+            <pre>
+ █████   █████   █████████  ███████████
+░░███   ░░███   ███░░░░░███░░███░░░░░███
+ ░███    ░███  ███     ░░░  ░███    ░███
+ ░███████████ ░███          ░██████████
+ ░███░░░░░███ ░███          ░███░░░░░███
+ ░███    ░███ ░░███     ███ ░███    ░███
+ █████   █████ ░░█████████  █████   █████
+░░░░░   ░░░░░   ░░░░░░░░░  ░░░░░   ░░░░░
+            </pre>
+        </div>
+
+        <!-- Header -->
+        <div class="header">
+            <h1>Install in seconds</h1>
+            <p>One command. Any project. Zero Python required.</p>
+        </div>
+
+        <!-- macOS / Linux -->
+        <div class="card">
+            <div class="card-header">
+                <span class="card-label">macOS / Linux</span>
+                <button class="copy-btn" onclick="copyText(this, 'curl -fsSL https://install.hcr.dev | bash')">
+                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                    <span>Copy</span>
+                </button>
+            </div>
+            <code class="code-block">curl -fsSL https://install.hcr.dev | bash</code>
+        </div>
+
+        <!-- Windows -->
+        <div class="card">
+            <div class="card-header">
+                <span class="card-label">Windows (PowerShell)</span>
+                <button class="copy-btn" onclick="copyText(this, 'irm https://install.hcr.dev/win | iex')">
+                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                    <span>Copy</span>
+                </button>
+            </div>
+            <code class="code-block">irm https://install.hcr.dev/win | iex</code>
+        </div>
+
+        <!-- Note -->
+        <p class="note">
+            Binaries available for macOS (Intel/ARM), Linux, and Windows.{' '}
+            <a href="https://github.com/PantheraLabs/hcr-install/releases" target="_blank" rel="noopener noreferrer">View releases →</a>
+        </p>
+
+        <!-- Footer -->
+        <div class="footer">
+            <a href="https://github.com/PantheraLabs/HybridCognitiveRuntime">GitHub →</a>
+            <p>© 2026 Panthera Labs. Intelligence is State.</p>
+        </div>
     </div>
 
-    <div class="platform">
-        <h3>Windows (PowerShell)</h3>
-        <div class="cmd"><code>irm https://install.hcr.dev/win | iex</code></div>
-    </div>
-
-    <div class="footer">
-        <p><a href="https://github.com/PantheraLabs/HybridCognitiveRuntime">GitHub →</a> · Version 0.2.0</p>
-    </div>
+    <script>
+        async function copyText(btn, text) {
+            await navigator.clipboard.writeText(text);
+            const originalHTML = btn.innerHTML;
+            btn.classList.add('copied');
+            btn.innerHTML = `<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span>Copied</span>`;
+            setTimeout(() => {
+                btn.classList.remove('copied');
+                btn.innerHTML = originalHTML;
+            }, 2000);
+        }
+    </script>
 </body>
 </html>
