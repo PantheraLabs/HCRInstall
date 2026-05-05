@@ -2,7 +2,7 @@
 $ErrorActionPreference = "Stop"
 
 # HCR CLI Installer
-# One-line install: irm https://install.hcr.dev/win | iex
+# One-line install: irm https://pantheralabs.github.io/HCRInstall/install.ps1 | iex
 
 $Repo = "PantheraLabs/hcr-install"
 $InstallDir = "$env:LOCALAPPDATA\bin"

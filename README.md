@@ -27,13 +27,13 @@
 ### macOS / Linux
 
 ```bash
-curl -fsSL https://install.hcr.dev | bash
+curl -fsSL https://pantheralabs.github.io/HCRInstall/install.sh | bash
 ```
 
 ### Windows (PowerShell)
 
 ```powershell
-irm https://install.hcr.dev/win | iex
+irm https://pantheralabs.github.io/HCRInstall/install.ps1 | iex
 ```
 
 **That's it.** `hcr` is now available from any terminal, any project directory.

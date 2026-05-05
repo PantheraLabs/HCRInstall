@@ -3,6 +3,159 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Install HCR</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0A0A0A;
+            color: #d4d4d8;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 80px 20px;
+        }
+        .container { width: 100%; max-width: 600px; }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 48px;
+            text-decoration: none;
+        }
+        .logo-mark {
+            width: 36px; height: 36px;
+            background: #fff;
+            color: #000;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 20px;
+            font-style: italic;
+        }
+        .logo-text {
+            font-weight: 900;
+            font-size: 24px;
+            color: #fff;
+            letter-spacing: -0.02em;
+            font-style: italic;
+        }
+        h1 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+        }
+        .subtitle {
+            color: #71717a;
+            font-size: 16px;
+            margin-bottom: 40px;
+        }
+        .card {
+            background: #111111;
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+        .label {
+            font-size: 12px;
+            color: #52525b;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 500;
+        }
+        .copy-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 12px;
+            color: #52525b;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+        .copy-btn:hover { color: #60a5fa; }
+        .copy-btn.copied { color: #4ade80; }
+        code {
+            font-family: ui-monospace, 'SF Mono', monospace;
+            font-size: 14px;
+            color: #e4e4e7;
+            word-break: break-all;
+        }
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 14px;
+            color: #52525b;
+        }
+        .footer a {
+            color: #60a5fa;
+            text-decoration: none;
+        }
+        .footer a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="https://github.com/PantheraLabs/HybridCognitiveRuntime" class="logo">
+            <div class="logo-mark">Ω</div>
+            <span class="logo-text">HCR</span>
+        </a>
+
+        <h1>Install in seconds</h1>
+        <p class="subtitle">One command. Any project. Zero Python required.</p>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="label">macOS / Linux</span>
+                <button class="copy-btn" onclick="copy(this, 'curl -fsSL https://install.hcr.dev | bash')">Copy</button>
+            </div>
+            <code>curl -fsSL https://install.hcr.dev | bash</code>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="label">Windows (PowerShell)</span>
+                <button class="copy-btn" onclick="copy(this, 'irm https://install.hcr.dev/win | iex')">Copy</button>
+            </div>
+            <code>irm https://install.hcr.dev/win | iex</code>
+        </div>
+
+        <div class="footer">
+            <a href="https://github.com/PantheraLabs/hcr-install/releases">View releases</a> ·
+            <a href="https://github.com/PantheraLabs/HybridCognitiveRuntime">GitHub</a>
+        </div>
+    </div>
+
+    <script>
+        async function copy(btn, text) {
+            await navigator.clipboard.writeText(text);
+            btn.textContent = 'Copied';
+            btn.classList.add('copied');
+            setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+        }
+    </script>
+</body>
+</html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Install HCR — Hybrid Cognitive Runtime</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -315,24 +468,24 @@
             <div class="card">
                 <div class="card-header">
                     <span class="card-label">macOS / Linux</span>
-                    <button class="copy-btn" onclick="copyText(this, 'curl -fsSL https://install.hcr.dev | bash')">
+                    <button class="copy-btn" onclick="copyText(this, 'curl -fsSL https://pantheralabs.github.io/HCRInstall/install.sh | bash')">
                         <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
                         <span>Copy</span>
                     </button>
                 </div>
-                <code class="code-block">curl -fsSL https://install.hcr.dev | bash</code>
+                <code class="code-block">curl -fsSL https://pantheralabs.github.io/HCRInstall/install.sh | bash</code>
             </div>
 
             <!-- Windows -->
             <div class="card">
                 <div class="card-header">
                     <span class="card-label">Windows (PowerShell)</span>
-                    <button class="copy-btn" onclick="copyText(this, 'irm https://install.hcr.dev/win | iex')">
+                    <button class="copy-btn" onclick="copyText(this, 'irm https://pantheralabs.github.io/HCRInstall/install.ps1 | iex')">
                         <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
                         <span>Copy</span>
                     </button>
                 </div>
-                <code class="code-block">irm https://install.hcr.dev/win | iex</code>
+                <code class="code-block">irm https://pantheralabs.github.io/HCRInstall/install.ps1 | iex</code>
             </div>
 
             <!-- Note -->
